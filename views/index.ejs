@@ -1,0 +1,41 @@
+<% include partials/header %>
+     <!--nav-bar-->
+        <nav class="ui three item fixed menu">
+            <div class="ui container">
+                <a href="/blogs" id="active-item" class="item"><i class="paw icon"></i> Home</a>
+                <a href="/blogs/new" class="item"><i class="edit icon"></i> New Post</a>
+                <a id="user" class="item"><i class="user icon"></i> Account</a>
+            </div>
+        </nav>
+    
+    <header class="ui huge header container"><h1>The RESTful Dog Blog</h1></header>
+    <main class="ui main text container">
+        <div class= "ui top attached segment">
+            <div class="ui divided items">
+                <% blogs.forEach(function(blog){ %>
+                <div class="item">
+                    <div class="image">
+                        <img src="<%=blog.image%>">
+                    </div>
+                    <div class="content">
+                            <a href="/blogs/<%=blog._id%>" class="header"><h3><%=blog.title%></h3></a>
+                        <div class="meta">
+                            <span><%= blog.created.toDateString() %></span>
+                        </div>
+                        <div class="description">
+                            <p><%- blog.body.substring(0, 100)%>...</p>
+                        </div>
+                        <div class="extra">
+                            <a href="/blogs/<%=blog._id%>" class="ui floated basic blue button">
+                                Read more <i class="right chevron icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            </div>
+        </div>
+        
+    </main>
+
+    <% include partials/footer.ejs %>

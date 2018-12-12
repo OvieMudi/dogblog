@@ -1,0 +1,33 @@
+<% include partials/header%>
+    <% include partials/navbar%>
+    
+      <header class="ui huge header" ><h1>Update Your Story</h1></header>
+      <main class="ui raised container segment">
+          <div class="ui large header">Edit "<%= blog.title %>"</div>
+          <!--Form-->
+          <form action="/blogs/<%= blog.id %>?_method=PUT" method="POST" class="ui form">
+            <div class="field">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="blog[title]" value="<%= blog.title %>" required>
+            </div>
+            <div class="field">
+              <label for="image">Image Link</label>
+              <input type="text" id="image" name="blog[image]" value="<%= blog.image %>" required>
+            </div>
+            <div class="body">
+              <label for="body">Body</label>
+              <textarea id="body" name="blog[body]" placeholder="Tell us your story..."><%= blog.body %></textarea>
+            </div>
+            <!--Submit button-->
+            <button class="ui labeled button" tabindex="0">
+              <button class="ui red button">
+                <i class="heart icon"></i> Submit
+              </button>
+              <a class="ui basic blue left pointing label">
+                Woof!
+              </a>
+            </button>
+          </form>
+      </main>
+
+<% include partials/footer.ejs %>
